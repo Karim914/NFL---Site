@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boutique Naruto RP NFL - Akatsuki Theme</title>
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://i.postimg.cc/pTpv8CN8/akatsuki-logo-akatsuki-wallpaper-preview-1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #eee;
+    overflow-x: hidden;
+  }
+
+  /* Overlay to darken background */
+  body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0; width: 100%; height: 100%;
+    background: rgba(10,10,10,0.85);
+    z-index: -1;
+  }
+
+  header {
+    background: linear-gradient(90deg, #1f0000dd, #400000dd);
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px #000000cc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  header img.logo {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 35px #d50000aa;
+    animation: glowPulse 3s ease-in-out infinite alternate;
+  }
+
+  header h1 {
+    font-family: 'Papyrus', cursive;
+    font-weight: 900;
+    font-size: 2.8rem;
+    margin: 0;
+    text-shadow: 2px 2px 10px #ff0000aa;
+    color: #ff4444;
+    letter-spacing: 1.5px;
+  }
+
+  @keyframes glowPulse {
+    0% {
+      filter: drop-shadow(0 0 6px #ff0000cc);
+      transform: scale(1);
+    }
+    100% {
+      filter: drop-shadow(0 0 18px #ff4444ff);
+      transform: scale(1.05);
+    }
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 30px auto 60px;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 25px;
+  }
+  .section-title {
+    grid-column: 1 / -1;
+    font-family: 'Impact', sans-serif;
+    font-size: 1.8rem;
+    color: #ff5555;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #ff2a2aaa;
+    border-bottom: 3px solid #ff0000;
+    padding-bottom: 5px;
+  }
+  .product {
+    background: #240000dd;
+    border: 2px solid #970000ff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px #ff2929aa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .product:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #ff2929ff;
+  }
+  .product h2 {
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 5px #ab0000cc;
+  }
+  .product button {
+    background: linear-gradient(135deg, #c70000, #7f0000);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px #ff1c1ccc;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease;
+  }
+  .product button:hover {
+    background: linear-gradient(135deg, #ff2a2a, #cc0000);
+    box-shadow: 0 0 20px #ff3f3fdd;
+  }
+
+  /* Cart Panel */
+  aside.cart {
+    position: fixed;
+    right: 0; top: 0; bottom: 0;
+    width: 320px;
+    background: #2a0000dd;
+    border-left: 3px solid #cc0000ff;
+    box-shadow: -4px 0 20px #aa0000cc;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+  }
+  aside.cart h2 {
+    font-family: 'Impact', sans-serif;
+    color: #ff5555;
+    margin: 0 0 18px 0;
+    border-bottom: 2px solid #ff0000;
+    padding-bottom: 6px;
+    text-shadow: 0 0 10px #ff4d4dcc;
+  }
+  ul#cartItems {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    flex-grow: 1;
+  }
+  ul#cartItems li {
+    background: #3d0000cc;
+    margin-bottom: 12px;
+    padding: 12px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff9999;
+    font-weight: 600;
+    box-shadow: 0 0 8px #ff6060cc;
+    transition: background 0.3s ease;
+  }
+  ul#cartItems li:hover {
+    background: #500000dd;
+  }
+  ul#cartItems li button {
+    background: transparent;
+    border: 2px solid #ff5555;
+    color: #ff9999;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 3px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  ul#cartItems li button:hover {
+    background: #ff4d4d;
+    border-color: #ff0000;
+    color: #fff;
+  }
+  p#totalPrice {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ff7777;
+    text-shadow: 0 0 8px #ff4f4fcc;
+    margin: 0 0 20px 0;
+  }
+
+  button#checkoutBtn {
+    background: linear-gradient(45deg, #d00000, #700000);
+    color: #fff;
+    border: none;
+    font-weight: 900;
+    font-size: 1.3rem;
+    padding: 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff2424cc;
+    transition: background 0.3s ease-in-out, box-shadow 0.4s ease;
+  }
+  button#checkoutBtn:hover {
+    background: linear-gradient(45deg, #ff4444, #b70000);
+    box-shadow: 0 0 30px #ff5555ff;
+  }
+
+  /* Responsive smaller devices */
+  @media (max-width: 900px){
+    aside.cart {
+      position: static;
+      width: 100%;
+      height: auto;
+      box-shadow: none;
+      border-left: none;
+      margin-top: 40px;
+    }
+    main {
+      margin-bottom: 20px;
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="https://i.postimg.cc/ZqXptfLK/DWtIROG.webp" alt="Logo Boutique Naruto Akatsuki" />
+  <h1>Boutique Naruto RP NFL</h1>
+</header>
+
+<main aria-label="Liste des produits disponibles">
+
+  <div class="section-title" tabindex="0">Rerolls</div>
+
+  <article class="product" tabindex="0" aria-label="Produit 1 reroll, 1 euro">
+    <h2>1 Reroll - 1 €</h2>
+    <button type="button" onclick="addToCart('1 Reroll', 1)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit 10 rerolls, 9 euros">
+    <h2>10 Rerolls - 9 €</h2>
+    <button type="button" onclick="addToCart('10 Rerolls', 9)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit 20 rerolls, 17 euros">
+    <h2>20 Rerolls - 17 €</h2>
+    <button type="button" onclick="addToCart('20 Rerolls', 17)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit 50 rerolls, 40 euros">
+    <h2>50 Rerolls - 40 €</h2>
+    <button type="button" onclick="addToCart('50 Rerolls', 40)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit 100 rerolls, 70 euros">
+    <h2>100 Rerolls - 70 €</h2>
+    <button type="button" onclick="addToCart('100 Rerolls', 70)">Ajouter au panier</button>
+  </article>
+
+  <div class="section-title" tabindex="0">VIP</div>
+
+  <article class="product" tabindex="0" aria-label="Produit VIP 1 Mois, 10 euros">
+    <h2>VIP 1 Mois - 10 €</h2>
+    <button type="button" onclick="addToCart('VIP 1 Mois', 10)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit VIP 3 Mois, 25 euros">
+    <h2>VIP 3 Mois - 25 €</h2>
+    <button type="button" onclick="addToCart('VIP 3 Mois', 25)">Ajouter au panier</button>
+  </article>
+  <article class="product" tabindex="0" aria-label="Produit VIP 5 Mois, 30 euros">
+    <h2>VIP 5 Mois - 30 €</h2>
+    <button type="button" onclick="addToCart('VIP 5 Mois', 30)">Ajouter au panier</button>
+  </article>
+</main>
+
+<aside class="cart" aria-label="Panier d'achat">
+  <h2>Panier</h2>
+  <ul id="cartItems" role="list" aria-live="polite" aria-relevant="additions removals"></ul>
+  <p id="totalPrice">Total: 0 €</p>
+  <button id="checkoutBtn" type="button" onclick="checkout()" aria-label="Payer avec PayPal" disabled>Payer avec PayPal</button>
+</aside>
+
+<script>
+  let cart = [];
+  let total = 0;
+
+  function addToCart(item, price) {
+    cart.push({ item, price });
+    total += price;
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
+    cart.forEach((product, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${product.item} - ${product.price} € `;
+      const btn = document.createElement('button');
+      btn.textContent = 'Supprimer';
+      btn.setAttribute('aria-label', `Supprimer ${product.item} du panier`);
+      btn.onclick = () => removeFromCart(index);
+      li.appendChild(btn);
+      cartItems.appendChild(li);
+    });
+    document.getElementById('totalPrice').textContent = `Total: ${total.toFixed(2)} €`;
+
+    // Disable checkout if cart empty
+    document.getElementById('checkoutBtn').disabled = (cart.length === 0);
+  }
+
+  function removeFromCart(index) {
+    if (index >= 0 && index < cart.length) {
+      total -= cart[index].price;
+      if (total < 0) total = 0;
+      cart.splice(index, 1);
+      updateCart();
+    }
+  }
+
+  function checkout() {
+    if (cart.length === 0) {
+      alert('Votre panier est vide.');
+      return;
+    }
+    const confirmMsg = "Merci de prendre une photo de votre paiement et d'ouvrir un ticket sur le discord avant de continuer.";
+    if (confirm(confirmMsg)) {
+      const amountStr = total.toFixed(2);
+      // Compose PayPal.me URL with amount as path segment and query params after
+      const baseURL = 'https://paypal.me/Charo933/';
+      const queryParams = '?country.x=FR&locale.x=fr_';
+      const finalURL = baseURL + encodeURIComponent(amountStr) + queryParams;
+      window.open(finalURL, '_blank');
+    }
+  }
+
+  // Initialize cart button disable state
+  updateCart();
+</script>
+</body>
+</html>
+
